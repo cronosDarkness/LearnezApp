@@ -1,2 +1,2 @@
 # LearnEz
-Aplicación en Ionic enfocada en el aprendizaje para alumnos de primaria
+Aplicación en Ionic con herramientas para el aprendizaje de alumnos de primaria
