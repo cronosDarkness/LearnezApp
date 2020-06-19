@@ -1,3 +1,32 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane disabled contentId="main-content">
+
+    <ion-menu contentId="main-content" type="overlay" menuId="closed">
+      
+      <ion-content>
+
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Menu</ion-title>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-list id="list">
+
+          <ion-searchbar placeholder="Buscar por tema"></ion-searchbar>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let page of appPages">
+            <ion-item routerDirection="root" [routerLink]="[page.url]" lines="none" detail="false">
+              <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ page.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+        </ion-list>
+      </ion-content>
+
+    </ion-menu>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>

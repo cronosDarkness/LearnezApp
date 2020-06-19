@@ -1,0 +1,15 @@
+ion-toolbar {
+    --background: var(--ion-color-secondary-shade) !important;
+}
+
+ion-title {
+    --color: var(--ion-color-light) !important;
+}
+
+ion-content, ion-item {
+    --background: var(--ion-color-light-tint) !important;
+}
+
+#list {
+    background: var(--ion-color-light-tint) !important;
+}
