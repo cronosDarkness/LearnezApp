@@ -3,11 +3,16 @@ ion-toolbar {
 }
 
 ion-title {
-    --color: var(--ion-color-light) !important;
+    --color: white !important;
 }
 
 ion-content, ion-item {
     --background: var(--ion-color-light-tint) !important;
+
+    ion-item {
+        font-size: 18px !important;
+    }
+
 }
 
 #list {
