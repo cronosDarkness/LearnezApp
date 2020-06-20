@@ -19,7 +19,7 @@ export class AppComponent {
     {
       title: 'Ejercicios',
       url: '/home',
-      icon: 'game-controller'
+      icon: 'clipboard'
     }
   ]
 
