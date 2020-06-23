@@ -4,10 +4,10 @@ ion-toolbar {
 
 ion-title {
     font-size: 28px !important;
-    --color: white !important;
+    --color: var(--ion-color-light) !important;
 }
 
 ion-menu-button {
-    --color: white !important;
+    --color: var(--ion-color-light) !important;
     font-size: 300px !important;
 }
