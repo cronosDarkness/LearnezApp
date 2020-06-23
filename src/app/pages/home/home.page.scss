@@ -1,29 +1,20 @@
-ion-content.background{
-    --background: url('../../../assets/img/FondoLearnez.jpg') 0 0/100% 100% no-repeat;
+ion-content {
+
+    --background: var(--ion-color-secondary-shade) !important;
+
+    ion-text {
+        color: var(--ion-color-light) !important;
+    }
+
 }
 
-ion-img {
-    border-radius: 4px;
-    padding: 5px;
-    width: 150px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+ion-grid {
+    text-align: center !important;
+    
+    #grado {
+        padding: 12px 0px 12px 0px !important;
+        font-size: 60px !important;
+        border-radius: 30px !important;
+    }
 
-ion-col{
-    size:"3";
 }
-
-.Encabezado{
-    text-align: center;
-    border: 5px solid transparent;
-    padding-top: 20px;
-}
-
-// ion-grid{
-//     grid-column-gap: 100px;
-//   grid-row-gap: 100px;
-//   grid-gap: 20px 80px;
-//   grid-gap: 500px;
-// }
