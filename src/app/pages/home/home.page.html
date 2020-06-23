@@ -1,117 +1,49 @@
+<ion-content [fullscreen]="false">
 
-<app-header></app-header>
+    <app-header></app-header>
 
-<ion-content [fullscreen]=true class="background" padding>
+    <ion-grid fixed>
 
- <div class="Encabezado">
-    Respuestas a tus libros de texto, explicaciones y más...
-    <br><br>
-    Selecciona un grado:
-</div>
+        <!--txt details page-->
+        <ion-row>
+            <ion-col push="1"></ion-col>
+            <ion-col size="10">
+                <ion-text color="light">
+                    <h2>Respuestas a tus libros de texto, explicaciones y más...</h2>
+                </ion-text>
+            </ion-col>
+            <ion-col push="1"></ion-col>
+        </ion-row>
 
-<ion-grid fixed>
-    <ion-row>
-        <ion-col>
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-subtitle>
-                        Primaria
-                    </ion-card-subtitle>
-                    <ion-card-title>
-                        Primer Grado
-                    </ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                        Aqui encontrarás diferente material
-                </ion-card-content>
-                <ion-img src="assets/img/uno.png"></ion-img>
-            </ion-card>
-        </ion-col>
-        <ion-col>
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-subtitle>
-                        Primaria
-                    </ion-card-subtitle>
-                    <ion-card-title>
-                        Primer Grado
-                    </ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                        Aqui encontrarás diferente material
-                </ion-card-content>
-                <ion-img src="assets/img/dos.png"></ion-img>
-            </ion-card>
-        </ion-col>
-        <ion-col>
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-subtitle>
-                        Primaria
-                    </ion-card-subtitle>
-                    <ion-card-title>
-                        Primer Grado
-                    </ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                        Aqui encontrarás diferente material
-                </ion-card-content>
-                <ion-img src="assets/img/tres.png"></ion-img>
-            </ion-card>
-        </ion-col>
-    </ion-row>
-    <ion-row>
-        <ion-col>
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-subtitle>
-                        Primaria
-                    </ion-card-subtitle>
-                    <ion-card-title>
-                        Primer Grado
-                    </ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                        Aqui encontrarás diferente material
-                </ion-card-content>
-                <ion-img src="assets/img/cuatro.png"></ion-img>
-            </ion-card>
-        </ion-col>
-        <ion-col>
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-subtitle>
-                        Primaria
-                    </ion-card-subtitle>
-                    <ion-card-title>
-                        Primer Grado
-                    </ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                        Aqui encontrarás diferente material
-                </ion-card-content>
-                <ion-img src="assets/img/cinco.png"></ion-img>
-            </ion-card>
-        </ion-col>
-        <ion-col>
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-subtitle>
-                        Primaria
-                    </ion-card-subtitle>
-                    <ion-card-title>
-                        Primer Grado
-                    </ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                        Aqui encontrarás diferente material
-                </ion-card-content>
-                <ion-img src="assets/img/seis.png"></ion-img>
-            </ion-card>
-        </ion-col>
-    </ion-row>
-</ion-grid>    
+        <!--txt select grade-->
+        <ion-row>
+            <ion-col size="12">
+                <ion-text color="light">
+                    <h2>Selecciona tu grado:</h2>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+
+        <!--grade txt and cards-->
+        <ion-row>
+            <!--grado-->
+            <ion-col size="12">
+                <ion-text color="light">
+                    <h2>Primaria</h2>
+                </ion-text>
+            </ion-col>
+            <!--cards of the grade-->
+            <ion-col size-xs="4" size-sm="4" size-md="3" size-lg="3" *ngFor="let g of grade">
+                <ion-card id="grado" [ngStyle]="{
+                                'color': g.color
+                            }" (click)="verLibrosPorGrado(g.grade)" button=true>
+                    {{g.grade}}°
+                </ion-card>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+    <app-footer></app-footer>
 
 </ion-content>
-
-<app-footer></app-footer>
