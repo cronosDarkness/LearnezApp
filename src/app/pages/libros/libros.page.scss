@@ -1,0 +1,14 @@
+
+ion-toolbar {
+    --background: var(--ion-color-success-tint) !important;
+
+    ion-title {
+        text-align: center !important;
+        --color: var(--ion-color-light) !important;
+    }
+
+}
+
+ion-card-content {
+    text-align: center !important;
+}

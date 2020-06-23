@@ -1,0 +1,35 @@
+<ion-content [fullscreen]="false">
+
+    <app-header></app-header>
+
+    <ion-toolbar>
+        <ion-title *ngIf="grado != null">Libros de {{grado}}°</ion-title>
+    </ion-toolbar>
+
+    <ion-grid fixed>
+
+        <!--Libro cards por cada libro-->
+        <ion-row *ngIf="hayLibros">
+            <ion-col size-xs="6" size-sm="6" size-md="4" size-lg="3" size-xl="3" *ngFor="let l of Libros">
+                <ion-card [button]="true">
+                    <ion-img src='assets/libros/{{l.titulo}}/{{l.titulo}}-001.png'></ion-img>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <!--No hay libros-->
+        <ion-row *ngIf="!hayLibros">
+            <ion-col size="12">
+                <ion-text color="Dark" [ngStyle]="{
+                    'text-align': 'center'
+                }">
+                    <h2>Ups, lo siento</h2>
+                    <h1>No hay libros en este momento para este grado.</h1>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+    <app-footer></app-footer>
+
+</ion-content>
