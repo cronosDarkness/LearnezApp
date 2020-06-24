@@ -33,7 +33,7 @@
                 </ion-text>
             </ion-col>
             <!--cards of the grade-->
-            <ion-col size-xs="4" size-sm="4" size-md="3" size-lg="3" *ngFor="let g of grade">
+            <ion-col size-xs="4" size-sm="4" size-md="3" size-lg="2" *ngFor="let g of grade">
                 <ion-card id="grado" [ngStyle]="{
                                 'color': g.color
                             }" (click)="verLibrosPorGrado(g.grade)" button=true>
