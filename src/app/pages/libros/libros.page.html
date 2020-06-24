@@ -11,7 +11,7 @@
         <!--Libro cards por cada libro-->
         <ion-row *ngIf="hayLibros">
             <ion-col size-xs="6" size-sm="6" size-md="4" size-lg="3" size-xl="3" *ngFor="let l of Libros">
-                <ion-card [button]="true">
+                <ion-card (click)="irBloquesDelLibro(l.titulo, l.libroId)" [button]="true">
                     <ion-img src='assets/libros/{{l.titulo}}/{{l.titulo}}-001.png'></ion-img>
                 </ion-card>
             </ion-col>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { LibroService } from "src/app/shared/services/libros.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { LibroService } from "src/app/shared/services/libro.service";
 import { Libro } from "src/app/shared/models/libro.model";
 
 @Component({
@@ -15,7 +15,8 @@ export class LibrosPage implements OnInit {
 
   constructor(
     public activatedRoute: ActivatedRoute,
-    public libroService: LibroService
+    public libroService: LibroService,
+    public router: Router,
   ) {}
 
   ngOnInit() {
@@ -37,6 +38,10 @@ export class LibrosPage implements OnInit {
       }); // lbservice
     }); // activeRoute
   } // onInit
+
+  irBloquesDelLibro(libroTitle: string, libroId: string) {
+    this.router.navigate( [ '/bloques', libroTitle, libroId] );
+  }
 
 
 }
