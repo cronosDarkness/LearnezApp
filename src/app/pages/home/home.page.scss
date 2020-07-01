@@ -1,20 +1,44 @@
 ion-content {
+  --background: var(--ion-color-light) !important;
+}
 
-    --background: var(--ion-color-secondary-shade) !important;
-
-    ion-text {
-        color: var(--ion-color-light) !important;
-    }
-
+ion-toolbar {
+  --background: var(--ion-color-success-tint) !important;
+  text-align: center !important;
+  color: var(--ion-color-light) !important;
 }
 
 ion-grid {
+  .cardWelcome {
+    --background: var(--ion-color-secondary-shade) !important;
+    border-radius: 20px !important;
+    padding: 20px 20px 20px 20px !important;
+  }
+
+  .textWelcome {
+    color: var(--ion-color-light) !important;
     text-align: center !important;
-    
-    #grado {
-        padding: 12px 0px 12px 0px !important;
-        font-size: 60px !important;
-        border-radius: 30px !important;
+  }
+}
+
+.containerNiveles {
+  margin-top: -10px !important;
+  .cardNivel {
+    padding: 10px 10px 10px 10px !important;
+    --background: var(--ion-color-secondary-shade) !important;
+    border-radius: 20px !important;
+
+    .textNivel {
+      text-align: center !important;
+      color: var(--ion-color-light) !important;
     }
 
+    .cardGrado {
+      --background: var(--ion-color-light-tint) !important;
+      border-radius: 10px !important;
+      text-align: center !important;
+      font-size: 50px !important;
+      color: var(--ion-color-medium) !important;
+    }
+  }
 }
