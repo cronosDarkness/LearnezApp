@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { NivelService } from "src/app/shared/services/nivel.service";
+import { Nivel } from 'src/app/shared/models/nivel.model';
 
 @Component({
   selector: "app-home",
@@ -7,40 +9,21 @@ import { Router } from "@angular/router";
   styleUrls: ["./home.page.scss"],
 })
 export class HomePage implements OnInit {
-  grade = [
-    {
-      grade: "1",
-      color: "#42AE18"
-    },
-    {
-      grade: "2",
-      color: "#F39317"
-    },
-    {
-      grade: "3",
-      color: "#8D33AA"
-    },
-    {
-      grade: "4",
-      color: "#D74726"
-    },
-    {
-      grade: "5",
-      color: "#00A1DE"
-    },
-    {
-      grade: "6",
-      color: "#00B971"
-    },
-  ];
-
+  niveles: Nivel[];
   constructor(
-    public router: Router
-    ) { }
+    public router: Router,
+    public nivelService: NivelService
+    ) {}
 
-  verLibrosPorGrado(grado: string) {
-    this.router.navigate(["/libros", parseInt(grado)]);
+  ngOnInit() {
+    this.nivelService.getNiveles().subscribe( (response: Nivel[])=> {
+      this.niveles = response;
+    },(error) => {
+      console.log(error);
+    });
   }
 
-  ngOnInit() {}
+  verLibrosPorGrado(grado) {
+    this.router.navigate(["/libros", grado]);
+  }
 }

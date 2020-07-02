@@ -1,47 +1,57 @@
-<ion-content [fullscreen]="false">
-
+<ion-content [fullscreen]="true">
     <app-header></app-header>
 
+    <ion-toolbar>
+        <ion-title>Libros de la SEP</ion-title>
+    </ion-toolbar>
+
+    <!-- welcome container -->
     <ion-grid fixed>
+        <ion-card class="cardWelcome">
+            <ion-row>
 
-        <!--txt details page-->
-        <ion-row>
-            <ion-col push="1"></ion-col>
-            <ion-col size="10">
-                <ion-text color="light">
-                    <h2>Respuestas a tus libros de texto, explicaciones y más...</h2>
-                </ion-text>
-            </ion-col>
-            <ion-col push="1"></ion-col>
-        </ion-row>
+                <!-- img books responsive -->
+                <ion-col size-xs="12" size-md="6">
+                    <ion-img src="assets/books.png"></ion-img>
+                </ion-col>
 
-        <!--txt select grade-->
-        <ion-row>
-            <ion-col size="12">
-                <ion-text color="light">
-                    <h2>Selecciona tu grado:</h2>
-                </ion-text>
-            </ion-col>
-        </ion-row>
+                <!-- text of welcome -->
+                <ion-col size-xs="12" size-md="4" push-md="1">
+                    <ion-text class="textWelcome">
+                        <h1>¡Te ayudamos con tu tarea!</h1>
+                        <h3>Respuestas a tus libros de texto, explicaciones y más...</h3>
+                    </ion-text>
+                </ion-col>
+                <ion-col push-md="1"></ion-col>
 
-        <!--grade txt and cards-->
+
+            </ion-row>
+        </ion-card>
+    </ion-grid>
+
+    <!-- niveles container -->
+    <ion-grid class="containerNiveles" fixed>
+        <!-- niveles row-->
         <ion-row>
-            <!--grado-->
-            <ion-col size="12">
-                <ion-text color="light">
-                    <h2>Primaria</h2>
-                </ion-text>
-            </ion-col>
-            <!--cards of the grade-->
-            <ion-col size-xs="4" size-sm="4" size-md="3" size-lg="2" *ngFor="let g of grade">
-                <ion-card id="grado" [ngStyle]="{
-                                'color': g.color
-                            }" (click)="verLibrosPorGrado(g.grade)" button=true>
-                    {{g.grade}}°
+            <!-- col nivel-->
+            <ion-col size-xs="12" size-sm="12" size-lg="6" size-xl="6" *ngFor="let niv of niveles">
+
+                <ion-card class="cardNivel">
+
+                    <ion-text class="textNivel">
+                        <h3>{{niv.nombre}}</h3>
+                    </ion-text>
+                    <!-- grado cards -->
+                    <ion-row>
+                        <ion-col size="4" *ngFor="let grado of niv.grado">
+                            <ion-card class="cardGrado" [button]="true" (click)="verLibrosPorGrado(grado.gradoId)">
+                                {{grado.identificador}}
+                            </ion-card>
+                        </ion-col>
+                    </ion-row>
                 </ion-card>
             </ion-col>
         </ion-row>
-
     </ion-grid>
 
     <app-footer></app-footer>
