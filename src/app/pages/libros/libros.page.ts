@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { LibroService } from "src/app/shared/services/libro.service";
 import { Libro } from "src/app/shared/models/libro.model";
-import { LoadingController, AlertController } from "@ionic/angular";
 
 @Component({
   selector: "app-libros",
@@ -13,8 +12,7 @@ export class LibrosPage implements OnInit {
   constructor(
     public activatedRoute: ActivatedRoute,
     public libroService: LibroService,
-    public router: Router,
-    public loadingController: LoadingController,
+    public router: Router
   ) {}
 
   libros: Libro[];
@@ -29,17 +27,8 @@ export class LibrosPage implements OnInit {
   }
 
   async cargarLibros() {
-    // Loading
-    const loading = await this.loadingController.create({
-      message: "Cargando...",
-      spinner: "bubbles",
-    });
-    await loading.present();
-
     this.libroService.getLibrosPorGrado(parseInt(this.gradoId)).subscribe(
       (response: Libro[]) => {
-        loading.dismiss();
-
         this.libros = response;
 
         if (this.libros.length > 0) {
@@ -49,7 +38,6 @@ export class LibrosPage implements OnInit {
         }
       },
       (error) => {
-        loading.dismiss();
         console.log(error);
       }
     );
@@ -58,5 +46,4 @@ export class LibrosPage implements OnInit {
   bloquesPorLibro(libroId: number) {
     this.router.navigate(["/bloques", libroId]);
   }
-
 }
