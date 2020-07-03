@@ -1,5 +1,28 @@
-ion-card {
+ion-content {
+  --background: var(--ion-color-light) !important;
+}
 
+ion-toolbar {
+  --background: var(--ion-color-success-tint) !important;
+  text-shadow: 0.5px 0.5px var(--ion-color-dark) !important;
+
+  ion-title {
+    text-align: left !important;
+    --color: var(--ion-color-light) !important;
+  }
+  ion-back-button {
+    color: var(--ion-color-light) !important;
+  }
+}
+
+ion-grid {
+  ion-card {
+    --background: var(--ion-color-light-tint) !important;
     padding: 10px !important;
 
+    .txtBloque {
+      color: var(--ion-color-dark) !important;
+      text-align: center !important;
+    }
+  }
 }
