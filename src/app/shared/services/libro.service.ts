@@ -9,9 +9,9 @@ import { Libro } from "../models/libro.model";
 export class LibroService {
   constructor(public http: HttpClient) {}
 
-  url = "http://localhost:6045/api/libros";
+  url = "http://localhost:6045/api/libros/";
 
-  getLibrosPorGrado(grado: number): Observable<Libro[]> {
-    return this.http.get<Libro[]>(this.url + '/porgrado/' + grado);
+  getLibrosPorGrado(gradoId: number): Observable<Libro[]> {
+    return this.http.get<Libro[]>(this.url + "grado/" + gradoId);
   }
 }

@@ -1,5 +1,5 @@
 export interface Grado {
-    gradoId: number;
-    identificador: number;
-    nivelId: number;
+    gradoId: number,
+    identificador: number,
+    nivelId: number,
 }
