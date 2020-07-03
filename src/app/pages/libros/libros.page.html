@@ -1,28 +1,39 @@
-<ion-content [fullscreen]="false">
+<ion-content [fullscreen]="true">
 
     <app-header></app-header>
-
+    
     <ion-toolbar>
-        <ion-title *ngIf="grado != null">Libros de {{grado}}°</ion-title>
+        
+        <ion-title>Libros</ion-title>
+        
     </ion-toolbar>
 
     <ion-grid fixed>
 
-        <!--Libro cards por cada libro-->
+        <!--Si hay libros - Libro cards por cada libro-->
         <ion-row *ngIf="hayLibros">
-            <ion-col size-xs="6" size-sm="6" size-md="4" size-lg="3" size-xl="3" *ngFor="let l of Libros">
-                <ion-card (click)="irBloquesDelLibro(l.titulo, l.libroId)" [button]="true">
-                    <ion-img src='assets/libros/{{l.titulo}}/{{l.titulo}}-001.png'></ion-img>
+
+            <ion-col size-xs="6" size-sm="6" size-md="4" size-lg="3" size-xl="3" *ngFor="let l of libros">
+
+                <ion-card class="cardLibro" [button]="true" (click)="bloquesPorLibro(l.libroId)">
+
+                    <ion-img alt="Not Found" class="imagen" src="assets/libros/{{l.imgLibro}}/{{l.imgLibro}}-001.png"></ion-img>
+
+                    <ion-card-header>
+                        <ion-card-title>{{l.titulo}} {{l.grado.identificador}}°</ion-card-title>
+                    </ion-card-header>
+
                 </ion-card>
+
             </ion-col>
+
         </ion-row>
-        <!--No hay libros-->
+
+        <!--Si no hay libros-->
         <ion-row *ngIf="!hayLibros">
             <ion-col size="12">
-                <ion-text color="Dark" [ngStyle]="{
-                    'text-align': 'center'
-                }">
-                    <h2>Ups, lo siento</h2>
+                <ion-text class="txtSorry">
+                    <h2>Lo siento</h2>
                     <h1>No hay libros en este momento para este grado.</h1>
                 </ion-text>
             </ion-col>

@@ -1,5 +1,9 @@
+import { Grado } from './grado.model';
+
 export class Libro {
   libroId: number;
   titulo: string;
-  grado: number;
+  imgLibro: string;
+  gradoId: number;
+  grado: Grado
 }

@@ -1,10 +1,31 @@
+ion-content {
+  --background: var(--ion-color-light) !important;
+}
 
 ion-toolbar {
-    --background: var(--ion-color-success-tint) !important;
+  --background: var(--ion-color-success-tint) !important;
+  text-shadow: 0.5px 0.5px var(--ion-color-dark) !important;
+  text-align: center !important;
+  --color: var(--ion-color-light) !important;
+}
 
-    ion-title {
-        text-align: center !important;
-        --color: var(--ion-color-light) !important;
+.txtSorry {
+  text-align: center !important;
+  color: var(--ion-color-dark) !important;
+}
+
+.cardLibro {
+  --background: var(--ion-color-secondary-shade) !important;
+  border-radius: 10px !important;
+
+  ion-card-header {
+    height: 80px !important;
+    padding: 10px 5px 10px 5px !important;
+
+    ion-card-title {
+      text-shadow: 0.5px 0.5px var(--ion-color-dark) !important;
+      text-align: center !important;
+      color: var(--ion-color-light) !important;
     }
-
+  }
 }
