@@ -19,6 +19,11 @@ const routes: Routes = [
     path: 'bloques/:libro-id',
     loadChildren: () => import('./pages/bloques/bloques.module').then( m => m.BloquesPageModule)
   },
+  {
+    path: 'paginas/:bloque-id/:pagina-id',
+    loadChildren: () => import('./pages/paginas/paginas.module').then( m => m.PaginasPageModule)
+  },
+
 
 ];
 

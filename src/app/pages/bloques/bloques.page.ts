@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Bloque } from 'src/app/shared/models/bloque.model';
-import { BloqueService } from 'src/app/shared/services/bloque.service';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Bloque } from "src/app/shared/models/bloque.model";
+import { BloqueService } from "src/app/shared/services/bloque.service";
 
 @Component({
-  selector: 'app-bloques',
-  templateUrl: './bloques.page.html',
-  styleUrls: ['./bloques.page.scss'],
+  selector: "app-bloques",
+  templateUrl: "./bloques.page.html",
+  styleUrls: ["./bloques.page.scss"],
 })
 export class BloquesPage implements OnInit {
   bloques: Bloque[];
@@ -15,24 +15,28 @@ export class BloquesPage implements OnInit {
   constructor(
     public activatedRoute: ActivatedRoute,
     public bloqueService: BloqueService,
-  ) { }
+    public route: Router
+  ) {}
 
   ngOnInit() {
-
     this.activatedRoute.paramMap.subscribe((param) => {
       this.libroId = parseInt(param.get("libro-id"));
       this.direction = "/libros/" + this.libroId;
 
-      this.bloqueService.getBloquesPorLibro(parseInt(param.get('libro-id'))).subscribe( (response: Bloque[]) => {
-
-        this.bloques = response;
-
-      }, (error) => {
-        console.log(error);
-      } );
-
-    })
-
+      this.bloqueService
+        .getBloquesPorLibro(parseInt(param.get("libro-id")))
+        .subscribe(
+          (response: Bloque[]) => {
+            this.bloques = response;
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+    });
   }
 
+  irPagina(bloqueId: number, paginaId: number) {
+    this.route.navigate(["/paginas", bloqueId, paginaId]);
+  }
 }
