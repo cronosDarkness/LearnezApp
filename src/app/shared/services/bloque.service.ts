@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Bloque } from '../models/bloque.model';
 
 @Injectable({
@@ -8,15 +8,12 @@ import { Bloque } from '../models/bloque.model';
 })
 export class BloqueService {
 
-  constructor(
-    public http: HttpClient
-  ) { }
+  constructor(public http: HttpClient) { }
 
   url = "http://localhost:6045/api/bloques/";
 
-
-  getBloquesPorLibro( libroId: number ): Observable<Bloque[]> {
-    return this.http.get<Bloque[]>(this.url + 'porlibro/' + libroId);
+  public getBloquesPorLibro(libroId: number): Observable<Bloque[]> {
+    return this.http.get<Bloque[]>(this.url + "libro/" + libroId);
   }
 
 }

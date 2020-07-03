@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/libros/libros.module').then( m => m.LibrosPageModule)
   },
   {
-    path: 'bloques/:libro-title/:libro-id',
+    path: 'bloques/:libro-id',
     loadChildren: () => import('./pages/bloques/bloques.module').then( m => m.BloquesPageModule)
   },
 
