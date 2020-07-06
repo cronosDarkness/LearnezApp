@@ -1,14 +1,20 @@
 <ion-content [fullscreen]="true">
 
     <app-header></app-header>
-    
+
     <ion-toolbar>
-        
-        <ion-title>Libros</ion-title>
-        
+        <ion-title>Regresar</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/home"></ion-back-button>
+        </ion-buttons>
+
     </ion-toolbar>
 
     <ion-grid fixed>
+
+        <ion-text *ngIf="hayLibros" class="txtLibrosDisp">
+            <h3>Libros disponibles</h3>
+        </ion-text>
 
         <!--Si hay libros - Libro cards por cada libro-->
         <ion-row *ngIf="hayLibros">
@@ -17,7 +23,8 @@
 
                 <ion-card class="cardLibro" [button]="true" (click)="bloquesPorLibro(l.libroId)">
 
-                    <ion-img alt="Not Found" class="imagen" src="assets/libros/{{l.imgLibro}}/{{l.imgLibro}}-001.png"></ion-img>
+                    <ion-img alt="Not Found" class="imagen" src="assets/libros/{{l.imgLibro}}/{{l.imgLibro}}-001.png">
+                    </ion-img>
 
                     <ion-card-header>
                         <ion-card-title>{{l.titulo}} {{l.grado.identificador}}°</ion-card-title>
