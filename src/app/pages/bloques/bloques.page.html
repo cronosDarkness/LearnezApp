@@ -29,7 +29,7 @@
             </ion-item>
 
             <ion-item *ngFor="let pagina of bloque.pagina" [button]="true"
-              (click)="irPagina(bloque.bloqueId, pagina.paginaId)">
+              (click)="irPagina( pagina.numPagina , bloque.bloqueId)">
               <ion-col size="10">
                 <ion-label>{{pagina.titulo}}</ion-label>
               </ion-col>

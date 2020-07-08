@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { BloqueService } from "src/app/shared/services/bloque.service";
 import { PaginaService } from "src/app/shared/services/pagina.service";
 import { Bloque } from "src/app/shared/models/bloque.model";
@@ -14,17 +14,21 @@ export class PaginasPage implements OnInit {
   constructor(
     public activatedRoute: ActivatedRoute,
     public bloqueService: BloqueService,
-    public paginaService: PaginaService
+    public paginaService: PaginaService,
+    public router: Router,
   ) {}
 
   bloque: Bloque;
   pagina: Pagina;
+  backDirection: string;
+  btnDisable: boolean;
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.getBloque(parseInt(params.get("bloque-id")));
+      this.backDirection = "bloques/" + params.get("bloque-id");
 
-      this.getPagina(parseInt(params.get("pagina-id")));
+      this.getPagina(parseInt(params.get("num-pag")), parseInt(params.get("bloque-id")) );
     });
   }
 
@@ -35,10 +39,14 @@ export class PaginasPage implements OnInit {
     });
   }
 
-  async getPagina(paginaId: number) {
-    this.paginaService.getPagina(paginaId).subscribe((response: Pagina) => {
+  async getPagina(numPagina: number, bloqueId: number) {
+    this.paginaService.getPagina(numPagina, bloqueId).subscribe((response: Pagina) => {
       this.pagina = response;
       console.log(this.pagina);
     });
+  }
+
+  public nextPage(numPagina: number, bloqueId: number) {
+    this.router.navigate(["paginas", numPagina + 1, "bloque", bloqueId]);
   }
 }
