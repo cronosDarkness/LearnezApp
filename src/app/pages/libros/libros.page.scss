@@ -5,11 +5,16 @@ ion-content {
 ion-toolbar {
   --background: var(--ion-color-success-tint) !important;
   text-shadow: 0.5px 0.5px var(--ion-color-dark) !important;
-  text-align: center !important;
+  text-align: left !important;
   --color: var(--ion-color-light) !important;
 }
 
 .txtSorry {
+  text-align: center !important;
+  color: var(--ion-color-dark) !important;
+}
+
+.txtLibrosDisp {
   text-align: center !important;
   color: var(--ion-color-dark) !important;
 }

@@ -3,10 +3,76 @@
   <app-header></app-header>
 
 
-  <ion-toolbar>
-    <ion-title>titulo de la página</ion-title>
+  <ion-toolbar *ngIf="bloque">
+    <ion-title>Regresar</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="bloques/{{bloque.bloqueId}}"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 
+  <ion-grid fixed>
+
+    <ion-row *ngIf="bloque">
+
+      <!-- txt bloque, asignatura y pagina button -->
+      <ion-col size="6">
+
+        <!-- texto asignatura con grado y bloque -->
+        <ion-text class="txtAsignatura">
+          <h3>{{bloque.libro.titulo}} {{bloque.libro.grado.identificador}}°</h3>
+          <h3>{{bloque.nombre}}</h3>
+        </ion-text>
+
+        <!-- botones de back page y next page -->
+        <ion-row>
+
+          <ion-col class="colNoPadding" size="4">
+            <ion-button class="btnBack" expand="block" fill="solid" shape="round">
+              <ion-icon slot="start" name="chevron-back"></ion-icon>
+            </ion-button>
+          </ion-col>
+
+          <ion-col class="colNoPadding" size="4">
+            <ion-button class="btnPage" *ngIf="pagina" expand="block" fill="solid" shape="round">
+              Pag. {{pagina.numPagina}}
+            </ion-button>
+          </ion-col>
+
+          <ion-col class="colNoPadding" size="4">
+            <ion-button class="btnNext" expand="block" fill="solid" shape="round">
+              <ion-icon slot="end" name="chevron-forward"></ion-icon>
+            </ion-button>
+          </ion-col>
+
+
+        </ion-row>
+
+      </ion-col>
+
+      <!-- imagen de la página -->
+      <ion-col *ngIf="pagina" size="6">
+
+        <ion-img src="assets/libros/{{bloque.libro.imgLibro}}/{{pagina.imgPagina}}.png"></ion-img>
+
+      </ion-col>
+
+    </ion-row>
+
+    <!--titulo de la página & preguntas y respuestas -->
+    <ion-row *ngIf="pagina">
+      <ion-col size="12">
+
+        <ion-text class="tituloPagina">
+          <h3>{{pagina.titulo}}</h3>
+        </ion-text>
+
+
+      </ion-col>
+    </ion-row>
+
+
+
+  </ion-grid>
 
   
 
