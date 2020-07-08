@@ -31,12 +31,14 @@ export class PaginasPage implements OnInit {
   async getBloque(bloqueId: number) {
     this.bloqueService.getBloque(bloqueId).subscribe((response: Bloque) => {
       this.bloque = response;
+      console.log(this.bloque);
     });
   }
 
   async getPagina(paginaId: number) {
     this.paginaService.getPagina(paginaId).subscribe((response: Pagina) => {
       this.pagina = response;
+      console.log(this.pagina);
     });
   }
 }

@@ -4,6 +4,7 @@ export interface Pagina {
     paginaId: number,
     titulo: string,
     numPagina: number,
+    imgPagina: string,
     bloqueId: number,
     respuesta: Respuesta,
 }
