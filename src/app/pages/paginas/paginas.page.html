@@ -3,10 +3,10 @@
   <app-header></app-header>
 
 
-  <ion-toolbar *ngIf="bloque">
+  <ion-toolbar>
     <ion-title>Regresar</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="bloques/{{bloque.bloqueId}}"></ion-back-button>
+      <ion-back-button [defaultHref]="backDirection"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 
@@ -39,7 +39,7 @@
           </ion-col>
 
           <ion-col class="colNoPadding" size="4">
-            <ion-button class="btnNext" expand="block" fill="solid" shape="round">
+            <ion-button [disabled]="btnDisable" (click)="nextPage(pagina.numPagina, bloque.bloqueId)" class="btnNext" expand="block" fill="solid" shape="round">
               <ion-icon slot="end" name="chevron-forward"></ion-icon>
             </ion-button>
           </ion-col>
@@ -50,9 +50,12 @@
       </ion-col>
 
       <!-- imagen de la página -->
-      <ion-col *ngIf="pagina" size="6">
+      <ion-col *ngIf="pagina"
+      push-lg="1" size-lg="4">
 
-        <ion-img src="assets/libros/{{bloque.libro.imgLibro}}/{{pagina.imgPagina}}.png"></ion-img>
+        <ion-card [button]="true">
+          <ion-img src="assets/libros/{{bloque.libro.imgLibro}}/{{pagina.imgPagina}}.png"></ion-img>
+        </ion-card>
 
       </ion-col>
 
