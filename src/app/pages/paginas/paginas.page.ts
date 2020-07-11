@@ -49,7 +49,7 @@ export class PaginasPage implements OnInit {
   }
 
   public previousPage(numPagina: number, bloqueId: number) {
-    this.router.navigate(["bloque", bloqueId, "paginas", numPagina - 1]);
+    this.router.navigate(["bloque", bloqueId, "pagina", numPagina - 1]);
   }
 
 }

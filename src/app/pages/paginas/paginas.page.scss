@@ -27,14 +27,22 @@ ion-grid {
 
   .btnBack {
     --border-radius: 30px 0px 0px 30px !important;
+    padding: 0px !important;
+    margin-right: 0px !important;
   }
 
   .btnPage {
-    --border-radius: 0px 0px 0px 0px !important;
+    --border-radius: 0px !important;
+    padding: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    --background: var(--ion-color-primary-tint) !important;
   }
 
   .btnNext {
     --border-radius: 0px 30px 30px 0px !important;
+    padding: 0px !important;
+    margin-left: 0px !important;
   }
 
 
@@ -42,6 +50,18 @@ ion-grid {
     text-align: center !important;
     color: var(--ion-color-dark) !important;
     padding: 30px 0px 30px 0px !important;
+  }
+
+  .cardRespuestas {
+    border-radius: 20px !important;
+    --background: var(--ion-color-primary) !important;
+    padding: 10px !important;
+
+    .txtRespuestas {
+      text-align: left !important;
+      color: var(--ion-color-light) !important;
+    }
+
   }
 
 }
