@@ -44,7 +44,8 @@
                     <!-- grado cards -->
                     <ion-row>
                         <ion-col size="4" *ngFor="let grado of niv.grado">
-                            <ion-card class="cardGrado" [button]="true" (click)="verLibrosPorGrado(grado.gradoId)">
+                            <ion-card class="cardGrado" [button]="true" (click)="verLibrosPorGrado(grado.gradoId)"
+                                [ngStyle]="{'color': grado.color}">
                                 {{grado.identificador}}
                             </ion-card>
                         </ion-col>
