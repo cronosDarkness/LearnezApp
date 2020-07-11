@@ -12,34 +12,37 @@
 
   <ion-grid fixed>
 
-    <ion-row *ngIf="bloque">
+
+    <!-- nombre del libro, bloque, imagen de la página y botones de siguiente y anterior -->
+    <ion-row>
 
       <!-- txt bloque, asignatura y pagina button -->
       <ion-col size="6">
 
         <!-- texto asignatura con grado y bloque -->
-        <ion-text class="txtAsignatura">
+        <ion-text *ngIf="bloque" class="txtAsignatura">
           <h3>{{bloque.libro.titulo}} {{bloque.libro.grado.identificador}}°</h3>
           <h3>{{bloque.nombre}}</h3>
         </ion-text>
 
         <!-- botones de back page y next page -->
-        <ion-row>
+        <ion-row *ngIf="pagina">
 
           <ion-col class="colNoPadding" size="4">
-            <ion-button class="btnBack" expand="block" fill="solid" shape="round">
+            <ion-button (click)="previousPage(pagina.numPagina, bloque.bloqueId)" class="btnBack" expand="block" fill="solid" shape="round">
               <ion-icon slot="start" name="chevron-back"></ion-icon>
             </ion-button>
           </ion-col>
 
           <ion-col class="colNoPadding" size="4">
-            <ion-button class="btnPage" *ngIf="pagina" expand="block" fill="solid" shape="round">
+            <ion-button class="btnPage" expand="block" fill="solid" shape="round">
               Pag. {{pagina.numPagina}}
             </ion-button>
           </ion-col>
 
           <ion-col class="colNoPadding" size="4">
-            <ion-button [disabled]="btnDisable" (click)="nextPage(pagina.numPagina, bloque.bloqueId)" class="btnNext" expand="block" fill="solid" shape="round">
+            <ion-button [disabled]="btnDisable" (click)="nextPage(pagina.numPagina, bloque.bloqueId)" class="btnNext"
+              expand="block" fill="solid" shape="round">
               <ion-icon slot="end" name="chevron-forward"></ion-icon>
             </ion-button>
           </ion-col>
@@ -49,35 +52,47 @@
 
       </ion-col>
 
+
       <!-- imagen de la página -->
-      <ion-col *ngIf="pagina"
-      push-lg="1" size-lg="4">
-
+      <ion-col *ngIf="bloque" push-lg="1" size-lg="4">
         <ion-card [button]="true">
-          <ion-img src="assets/libros/{{bloque.libro.imgLibro}}/{{pagina.imgPagina}}.png"></ion-img>
+          <ion-img *ngIf="pagina" src="assets/libros/{{bloque.libro.imgLibro}}/{{pagina.imgPagina}}.png"></ion-img>
         </ion-card>
-
       </ion-col>
 
     </ion-row>
 
+
     <!--titulo de la página & preguntas y respuestas -->
     <ion-row *ngIf="pagina">
-      <ion-col size="12">
 
+      <ion-col size="12">
         <ion-text class="tituloPagina">
           <h3>{{pagina.titulo}}</h3>
+          <h3>Respuestas / Explicaciones</h3>
         </ion-text>
-
-
       </ion-col>
+
+      <!-- reservado respuestas -->
+      <ion-col *ngFor="let respuesta of pagina.respuesta" size-sm="12">
+        <ion-card class="cardRespuestas">
+
+          <ion-text class="txtRespuestas">
+            <h4>{{respuesta.pregunta}}</h4>
+            <h4>Respuesta: {{respuesta.solucion}}</h4>
+          </ion-text>
+
+
+        </ion-card>
+      </ion-col>
+
     </ion-row>
 
 
 
   </ion-grid>
 
-  
+
 
 
 

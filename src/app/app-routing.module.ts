@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/bloques/bloques.module').then( m => m.BloquesPageModule)
   },
   {
-    path: 'paginas/:num-pag/bloque/:bloque-id',
+    path: 'bloque/:bloque-id/pagina/:num-pag',
     loadChildren: () => import('./pages/paginas/paginas.module').then( m => m.PaginasPageModule)
   },
 
