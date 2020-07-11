@@ -35,18 +35,21 @@ export class PaginasPage implements OnInit {
   async getBloque(bloqueId: number) {
     this.bloqueService.getBloque(bloqueId).subscribe((response: Bloque) => {
       this.bloque = response;
-      console.log(this.bloque);
     });
   }
 
   async getPagina(numPagina: number, bloqueId: number) {
     this.paginaService.getPagina(numPagina, bloqueId).subscribe((response: Pagina) => {
       this.pagina = response;
-      console.log(this.pagina);
     });
   }
 
   public nextPage(numPagina: number, bloqueId: number) {
-    this.router.navigate(["paginas", numPagina + 1, "bloque", bloqueId]);
+    this.router.navigate(["bloque", bloqueId, "pagina", numPagina + 1]);
   }
+
+  public previousPage(numPagina: number, bloqueId: number) {
+    this.router.navigate(["bloque", bloqueId, "paginas", numPagina - 1]);
+  }
+
 }
