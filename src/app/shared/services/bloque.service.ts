@@ -11,6 +11,11 @@ export class BloqueService {
   constructor(public http: HttpClient) { }
 
   url = "http://localhost:6045/api/bloques/";
+
+  // Obtiene todos los bloques y los libros relacionados
+  public getBloques(): Observable<Bloque[]> {
+    return this.http.get<Bloque[]>(this.url);
+  }
   
   // Obtiene los bloques de un libro y las páginas relacionadas, recibe libroId
   public getBloquesPorLibro(libroId: number): Observable<Bloque[]> {

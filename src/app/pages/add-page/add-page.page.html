@@ -1,0 +1,60 @@
+<ion-content [fullscreen]="true">
+  <app-header></app-header>
+
+
+  <ion-grid fixed>
+    <ion-row>
+
+      <ion-col size-xl="12">
+        <ion-text class="txtAddPage">
+          <h3>Agregue una página a un libro</h3>
+        </ion-text>
+        <ion-list>
+
+          <ion-item>
+            <ion-label position="floating">Título de página</ion-label>
+            <ion-input [(ngModel)]="pagina.titulo" type="text" placeholder="Ingrega un título para la página">
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Número de página</ion-label>
+            <ion-input [(ngModel)]="pagina.numPagina" type="number" placeholder="Ingresa el numero de la página">
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Nombre de la imágen de la página (tiene que ser exacto)</ion-label>
+            <ion-input [(ngModel)]="pagina.imgPagina" type="text"
+              placeholder="Ingresa el nombre de la imágen de la página"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Bloque</ion-label>
+            <ion-select [(ngModel)]="pagina.bloqueId"  Splaceholder="Seleccciona el bloque ID" interface="action-sheet">
+              <ion-select-option *ngFor="let bloque of bloques" [value]="bloque.bloqueId">
+                {{bloque.nombre}} {{bloque.libro.titulo}} {{bloque.libro.grado.identificador}}°
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+        </ion-list>
+
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col pull-xs="0" push-xl="3"></ion-col>
+      <ion-col class="colAddPage" size-xs="12" size-xl="6">
+        <ion-button (click)="agregarPagina(pagina)" expand="block" fill="solid" shape="round">
+          Añadir pagina
+        </ion-button>
+      </ion-col>
+      <ion-col push-xs="0" push-xl="3"></ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+</ion-content>
