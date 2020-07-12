@@ -15,41 +15,74 @@ export class PaginasPage implements OnInit {
     public activatedRoute: ActivatedRoute,
     public bloqueService: BloqueService,
     public paginaService: PaginaService,
-    public router: Router,
+    public router: Router
   ) {}
 
   bloque: Bloque;
   pagina: Pagina;
-  backDirection: string;
-  btnDisable: boolean;
+
+  numPagina: number;
+  bloqueId: number;
+  libroId: number;
+
+  btnPrevPageDisable: boolean;
+  btnNextPageDisable: boolean;
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params) => {
-      this.getBloque(parseInt(params.get("bloque-id")));
-      this.backDirection = "bloques/" + params.get("bloque-id");
+      this.numPagina = parseInt(params.get("num-pag"));
+      this.bloqueId = parseInt(params.get("bloque-id"));
 
-      this.getPagina(parseInt(params.get("num-pag")), parseInt(params.get("bloque-id")) );
+      this.getBloque(this.bloqueId);
+      this.getPagina(this.numPagina, this.bloqueId);
     });
   }
 
-  async getBloque(bloqueId: number) {
+  getBloque(bloqueId: number) {
     this.bloqueService.getBloque(bloqueId).subscribe((response: Bloque) => {
       this.bloque = response;
+      this.libroId = this.bloque.libro.libroId;
+
+      // pagina actual & inicio de paginas del libro
+      if (this.numPagina <= this.bloque.libro.inicioNumPaginas) {
+        this.btnPrevPageDisable = true;
+      }
+      // pagina actual & máximo de paginas del libro
+      if (this.numPagina >= this.bloque.libro.numPaginas) {
+        this.btnNextPageDisable = true;
+      }
     });
   }
 
-  async getPagina(numPagina: number, bloqueId: number) {
-    this.paginaService.getPagina(numPagina, bloqueId).subscribe((response: Pagina) => {
-      this.pagina = response;
-    });
+  getPagina(numPagina: number, bloqueId: number) {
+    this.paginaService
+      .getPagina(numPagina, bloqueId)
+      .subscribe((response: Pagina) => {
+        this.pagina = response;
+      });
   }
 
-  public nextPage(numPagina: number, bloqueId: number) {
-    this.router.navigate(["bloque", bloqueId, "pagina", numPagina + 1]);
+  regresar() {
+    this.router.navigateByUrl("bloques/" + this.libroId);
   }
 
-  public previousPage(numPagina: number, bloqueId: number) {
-    this.router.navigate(["bloque", bloqueId, "pagina", numPagina - 1]);
+  // Se navega a la siguiente página
+  public nextPage() {
+    this.router.navigate([
+      "bloque",
+      this.bloqueId,
+      "pagina",
+      this.numPagina + 1,
+    ]);
   }
 
+  // Se navega a la página anterior
+  public previousPage() {
+    this.router.navigate([
+      "bloque",
+      this.bloqueId,
+      "pagina",
+      this.numPagina - 1,
+    ]);
+  }
 }
