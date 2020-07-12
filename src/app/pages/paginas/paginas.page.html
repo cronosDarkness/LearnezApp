@@ -4,10 +4,19 @@
 
 
   <ion-toolbar>
-    <ion-title>Regresar</ion-title>
+
     <ion-buttons slot="start">
-      <ion-back-button [defaultHref]="backDirection"></ion-back-button>
+
+      <ion-button class="btnRegresarBloques" (click)="regresar()">
+        <ion-icon class="iconBack" slot="start" name="arrow-back-outline"></ion-icon>
+        Regresar
+      </ion-button>
+
     </ion-buttons>
+
+
+
+
   </ion-toolbar>
 
   <ion-grid fixed>
@@ -17,7 +26,7 @@
     <ion-row>
 
       <!-- txt bloque, asignatura y pagina button -->
-      <ion-col size="6">
+      <ion-col size="6" *ngIf="bloque">
 
         <!-- texto asignatura con grado y bloque -->
         <ion-text *ngIf="bloque" class="txtAsignatura">
@@ -28,21 +37,20 @@
         <!-- botones de back page y next page -->
         <ion-row *ngIf="pagina">
 
-          <ion-col class="colNoPadding" size="4">
-            <ion-button (click)="previousPage(pagina.numPagina, bloque.bloqueId)" class="btnBack" expand="block" fill="solid" shape="round">
+          <ion-col *ngIf="bloque" class="colNoPadding" size="4">
+            <ion-button [disabled]="btnPrevPageDisable" (click)="previousPage()" class="btnBack" expand="block">
               <ion-icon slot="start" name="chevron-back"></ion-icon>
             </ion-button>
           </ion-col>
 
           <ion-col class="colNoPadding" size="4">
-            <ion-button class="btnPage" expand="block" fill="solid" shape="round">
+            <ion-button class="btnPage" expand="block">
               Pag. {{pagina.numPagina}}
             </ion-button>
           </ion-col>
 
-          <ion-col class="colNoPadding" size="4">
-            <ion-button [disabled]="btnDisable" (click)="nextPage(pagina.numPagina, bloque.bloqueId)" class="btnNext"
-              expand="block" fill="solid" shape="round">
+          <ion-col *ngIf="bloque" class="colNoPadding" size="4">
+            <ion-button [disabled]="btnNextPageDisable" (click)="nextPage()" class="btnNext" expand="block">
               <ion-icon slot="end" name="chevron-forward"></ion-icon>
             </ion-button>
           </ion-col>

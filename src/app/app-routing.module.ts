@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'bloque/:bloque-id/pagina/:num-pag',
     loadChildren: () => import('./pages/paginas/paginas.module').then( m => m.PaginasPageModule)
+  },  {
+    path: 'add-page',
+    loadChildren: () => import('./pages/add-page/add-page.module').then( m => m.AddPagePageModule)
   },
+
 
 
 ];

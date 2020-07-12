@@ -16,5 +16,10 @@ export class PaginaService {
   public getPagina(numPagina: number, bloqueId: number): Observable<Pagina> {
     return this.http.get<Pagina>(this.url + numPagina + "/bloque/" + bloqueId);
   }
+
+  // Agrega una nueva página asociada a un bloque
+  public postPage(pagina: Pagina): Observable<void> {
+    return this.http.post<void>(this.url + "add/" ,pagina);
+  }
   
 }
