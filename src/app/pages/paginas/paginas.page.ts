@@ -4,6 +4,8 @@ import { BloqueService } from "src/app/shared/services/bloque.service";
 import { PaginaService } from "src/app/shared/services/pagina.service";
 import { Bloque } from "src/app/shared/models/bloque.model";
 import { Pagina } from "src/app/shared/models/pagina.model";
+import { ModalController } from "@ionic/angular";
+import { ImageModalPage } from "../image-modal/image-modal.page";
 
 @Component({
   selector: "app-paginas",
@@ -15,7 +17,8 @@ export class PaginasPage implements OnInit {
     public activatedRoute: ActivatedRoute,
     public bloqueService: BloqueService,
     public paginaService: PaginaService,
-    public router: Router
+    public router: Router,
+    public modalController: ModalController
   ) {}
 
   bloque: Bloque;
@@ -84,5 +87,16 @@ export class PaginasPage implements OnInit {
       "pagina",
       this.numPagina - 1,
     ]);
+  }
+
+  async openPreview(imgLibro, imgPagina) {
+    const modal = await this.modalController.create({
+      component: ImageModalPage,
+      componentProps: {
+        imgLibro: imgLibro,
+        imgPagina: imgPagina,
+      },
+    });
+    return await modal.present();
   }
 }
