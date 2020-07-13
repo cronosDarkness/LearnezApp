@@ -44,7 +44,7 @@ export class LibrosPage implements OnInit {
   }
 
   bloquesPorLibro(libroId: number) {
-    this.router.navigate(["/bloques", libroId]);
+    this.router.navigate(["/bloques", libroId, this.gradoId]);
   }
 
   regresar() {

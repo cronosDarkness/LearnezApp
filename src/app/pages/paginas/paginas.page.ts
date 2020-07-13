@@ -67,7 +67,7 @@ export class PaginasPage implements OnInit {
   }
 
   regresar() {
-    this.router.navigateByUrl("bloques/" + this.libroId);
+    this.router.navigateByUrl("bloques/" + this.libroId + "/" + this.bloque.libro.gradoId);
   }
 
   // Se navega a la siguiente página
