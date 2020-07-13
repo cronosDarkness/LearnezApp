@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'add-page',
     loadChildren: () => import('./pages/add-page/add-page.module').then( m => m.AddPagePageModule)
   },
+  {
+    path: 'image-modal',
+    loadChildren: () => import('./pages/image-modal/image-modal.module').then( m => m.ImageModalPageModule)
+  },
 
 
 

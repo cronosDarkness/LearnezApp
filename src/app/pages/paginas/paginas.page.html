@@ -63,7 +63,7 @@
 
       <!-- imagen de la página -->
       <ion-col *ngIf="bloque" push-lg="1" size-lg="4">
-        <ion-card [button]="true">
+        <ion-card (click)="openPreview(bloque.libro.imgLibro ,pagina.imgPagina)" [button]="true">
           <ion-img *ngIf="pagina" src="assets/libros/{{bloque.libro.imgLibro}}/{{pagina.imgPagina}}.png"></ion-img>
         </ion-card>
       </ion-col>

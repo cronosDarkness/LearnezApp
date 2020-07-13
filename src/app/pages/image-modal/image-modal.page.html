@@ -1,0 +1,20 @@
+<ion-content [fullscreen]="true">
+
+  <ion-item>
+
+    <ion-button slot="end" (click)="close()" fill="clear" color="dark">
+      <ion-icon slot="end" name="close"></ion-icon>
+      Cerrar
+    </ion-button>
+
+  </ion-item>
+
+  <ion-slides [options]="slideOptions" #slider>
+    <ion-slide>
+      <div class="swiper-zoom-container">
+        <img src="assets/libros/{{imgLibro}}/{{imgPagina}}.png">
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>
