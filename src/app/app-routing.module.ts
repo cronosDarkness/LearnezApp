@@ -12,7 +12,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'libros/:libro-id',
+    path: 'libros/:grado-id',
     loadChildren: () => import('./pages/libros/libros.module').then( m => m.LibrosPageModule)
   },
   {

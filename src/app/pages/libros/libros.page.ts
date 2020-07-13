@@ -21,7 +21,7 @@ export class LibrosPage implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((param) => {
-      this.gradoId = param.get("libro-id");
+      this.gradoId = param.get("grado-id");
       this.cargarLibros();
     });
   }
