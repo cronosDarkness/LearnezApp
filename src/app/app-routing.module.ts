@@ -12,17 +12,18 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'libros/:id',
+    path: 'libros/:grado-id',
     loadChildren: () => import('./pages/libros/libros.module').then( m => m.LibrosPageModule)
   },
   {
-    path: 'bloques/:libro-id',
+    path: 'bloques/:libro-id/:grado-id',
     loadChildren: () => import('./pages/bloques/bloques.module').then( m => m.BloquesPageModule)
   },
   {
     path: 'bloque/:bloque-id/pagina/:num-pag',
     loadChildren: () => import('./pages/paginas/paginas.module').then( m => m.PaginasPageModule)
-  },  {
+  },
+  {
     path: 'add-page',
     loadChildren: () => import('./pages/add-page/add-page.module').then( m => m.AddPagePageModule)
   },

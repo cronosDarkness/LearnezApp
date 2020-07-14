@@ -2,10 +2,14 @@
   <app-header></app-header>
 
   <ion-toolbar>
-    <ion-title>Regresar</ion-title>
+
     <ion-buttons slot="start">
-      <ion-back-button [defaultHref]="direction"></ion-back-button>
+      <ion-button class="btnRegresar" (click)="regresar()">
+        <ion-icon class="iconBack" slot="start" name="arrow-back-outline"></ion-icon>
+        Regresar
+      </ion-button>
     </ion-buttons>
+
   </ion-toolbar>
 
   <ion-grid fixed>
@@ -45,11 +49,11 @@
       </ion-col>
     </ion-row>
 
-    
+
   </ion-grid>
-  
+
   <app-footer></app-footer>
-  
+
   <!-- fab placed to the (vertical) center and end -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addPage()">
     <ion-fab-button>

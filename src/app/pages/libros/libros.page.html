@@ -3,9 +3,12 @@
     <app-header></app-header>
 
     <ion-toolbar>
-        <ion-title>Regresar</ion-title>
+
         <ion-buttons slot="start">
-            <ion-back-button defaultHref="/home"></ion-back-button>
+            <ion-button class="btnRegresar" (click)="regresar()">
+                <ion-icon class="iconBack" slot="start" name="arrow-back-outline"></ion-icon>
+                Regresar
+            </ion-button>
         </ion-buttons>
 
     </ion-toolbar>

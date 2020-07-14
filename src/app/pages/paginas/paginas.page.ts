@@ -4,7 +4,7 @@ import { BloqueService } from "src/app/shared/services/bloque.service";
 import { PaginaService } from "src/app/shared/services/pagina.service";
 import { Bloque } from "src/app/shared/models/bloque.model";
 import { Pagina } from "src/app/shared/models/pagina.model";
-import { ModalController } from "@ionic/angular";
+import { ModalController, AnimationController } from "@ionic/angular";
 import { ImageModalPage } from "../image-modal/image-modal.page";
 
 @Component({
@@ -18,7 +18,8 @@ export class PaginasPage implements OnInit {
     public bloqueService: BloqueService,
     public paginaService: PaginaService,
     public router: Router,
-    public modalController: ModalController
+    public modalController: ModalController,
+    public animationController: AnimationController
   ) {}
 
   bloque: Bloque;
@@ -66,7 +67,7 @@ export class PaginasPage implements OnInit {
   }
 
   regresar() {
-    this.router.navigateByUrl("bloques/" + this.libroId);
+    this.router.navigateByUrl("bloques/" + this.libroId + "/" + this.bloque.libro.gradoId);
   }
 
   // Se navega a la siguiente página
@@ -90,8 +91,35 @@ export class PaginasPage implements OnInit {
   }
 
   async openPreview(imgLibro, imgPagina) {
+    const enterAnimation = (baseEl: any) => {
+      const backdropAnimation = this.animationController
+        .create()
+        .addElement(baseEl.querySelector("ion-backdrop")!)
+        .fromTo("opacity", "0.01", "var(--backdrop-opacity)");
+
+      const wrapperAnimation = this.animationController
+        .create()
+        .addElement(baseEl.querySelector(".modal-wrapper")!)
+        .keyframes([
+          { offset: 0, opacity: "0", transform: "scale(0)" },
+          { offset: 1, opacity: "0.99", transform: "scale(1)" },
+        ]);
+
+      return this.animationController
+        .create()
+        .addElement(baseEl)
+        .easing("ease-out")
+        .duration(500)
+        .addAnimation([backdropAnimation, wrapperAnimation]);
+    };
+    const leaveAnimation = (baseEl: any) => {
+      return enterAnimation(baseEl).direction("reverse");
+    };
+
     const modal = await this.modalController.create({
       component: ImageModalPage,
+      enterAnimation,
+      leaveAnimation,
       componentProps: {
         imgLibro: imgLibro,
         imgPagina: imgPagina,

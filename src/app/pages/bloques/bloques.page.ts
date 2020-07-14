@@ -11,7 +11,7 @@ import { BloqueService } from "src/app/shared/services/bloque.service";
 export class BloquesPage implements OnInit {
   bloques: Bloque[];
   libroId: number;
-  direction: string;
+  gradoId: number;
   constructor(
     public activatedRoute: ActivatedRoute,
     public bloqueService: BloqueService,
@@ -21,7 +21,7 @@ export class BloquesPage implements OnInit {
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((param) => {
       this.libroId = parseInt(param.get("libro-id"));
-      this.direction = "/libros/" + this.libroId;
+      this.gradoId = parseInt(param.get("grado-id"));
 
       this.bloqueService
         .getBloquesPorLibro(parseInt(param.get("libro-id")))
@@ -42,5 +42,9 @@ export class BloquesPage implements OnInit {
 
   addPage() {
     this.route.navigateByUrl("/add-page");
+  }
+
+  regresar() {
+    this.route.navigateByUrl("/libros/" + this.gradoId);
   }
 }

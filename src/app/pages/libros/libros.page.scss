@@ -4,9 +4,17 @@ ion-content {
 
 ion-toolbar {
   --background: var(--ion-color-success-tint) !important;
-  text-shadow: 0.5px 0.5px var(--ion-color-dark) !important;
-  text-align: left !important;
-  --color: var(--ion-color-light) !important;
+
+  .btnRegresar {
+    --color: var(--ion-color-light) !important;
+    font-size: 18px !important;
+    margin: 7px !important;
+
+    .iconBack {
+      margin-right: 24px !important;
+      color: var(--ion-color-light) !important;
+    }
+  }
 }
 
 .txtSorry {
