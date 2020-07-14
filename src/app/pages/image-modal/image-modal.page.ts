@@ -10,6 +10,12 @@ export class ImageModalPage implements OnInit {
   imgLibro: string;
   imgPagina: string;
 
+  slidesOptions = {
+    zoom: {
+      maxRatio: 1.5
+    }
+  };
+
   constructor(
     public navParams: NavParams,
     public modalController: ModalController
