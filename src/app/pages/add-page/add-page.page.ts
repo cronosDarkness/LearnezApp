@@ -4,6 +4,7 @@ import { BloqueService } from "src/app/shared/services/bloque.service";
 import { Bloque } from "src/app/shared/models/bloque.model";
 import { PaginaService } from "src/app/shared/services/pagina.service";
 import { AlertController } from "@ionic/angular";
+import { PhotoService } from "src/app/shared/services/photo.service";
 
 @Component({
   selector: "app-add-page",
@@ -13,11 +14,13 @@ import { AlertController } from "@ionic/angular";
 export class AddPagePage implements OnInit {
   pagina: Pagina = new Pagina();
   bloques: Bloque[];
+  photos = this.photoService.photos;
 
   constructor(
     public bloqueService: BloqueService,
     public paginaService: PaginaService,
-    public alertController: AlertController
+    public alertController: AlertController,
+    public photoService: PhotoService
   ) {}
 
   ngOnInit() {
@@ -27,14 +30,26 @@ export class AddPagePage implements OnInit {
     });
   }
 
+  addPhotoToGallery() {
+    this.photoService.addNewToGallery();
+  }
+
   // Button agregarPagina
   agregarPagina(page: Pagina) {
     this.paginaService.postPage(page).subscribe(
       () => {
-        this.presentAlert("Hecho.", "¡Página agregada!", "Los cambios se han llevado a cabo");
+        this.presentAlert(
+          "Hecho.",
+          "¡Página agregada!",
+          "Los cambios se han llevado a cabo"
+        );
       },
       () => {
-        this.presentAlert("Error", "Problema al agregar la página","Verifique que llenó la información solicitada");
+        this.presentAlert(
+          "Error",
+          "Problema al agregar la página",
+          "Verifique que llenó la información solicitada"
+        );
       }
     );
   }
