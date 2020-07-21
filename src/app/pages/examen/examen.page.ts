@@ -25,7 +25,9 @@ export class ExamenPage implements OnInit {
 
   bloqueId: number;
   libroId: number;
-  gradoId: number;
+
+  btnPrevPageDisable: boolean;
+  btnNextPageDisable: boolean;
   
 
   ngOnInit() {
@@ -52,11 +54,11 @@ export class ExamenPage implements OnInit {
   // }
 
   getExamen(bloqueId: number) {
-    this.router.navigate(["/Bloque", bloqueId, this.bloqueId]);
+    this.router.navigate(["/bloque", bloqueId]);
   }
 
   regresar() {
-    this.route.navigateByUrl("/libros/" + this.gradoId);
+    this.router.navigateByUrl("bloques/" + this.libroId + "/" + this.bloque.libro.gradoId);
   }
 
 }

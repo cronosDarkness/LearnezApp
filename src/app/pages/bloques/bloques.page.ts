@@ -40,6 +40,10 @@ export class BloquesPage implements OnInit {
     this.route.navigate(["bloque", bloqueId, "pagina", numPagina]);
   }
 
+  irExamen(bloqueId: number) {
+    this.route.navigate(["/bloque/", bloqueId]);
+  }
+
   addPage() {
     this.route.navigateByUrl("/add-page");
   }
