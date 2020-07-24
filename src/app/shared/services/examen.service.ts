@@ -13,8 +13,8 @@ export class ExamenService
 
   url = "http://localhost:6045/api/examenes/bloque/";
 
-  getExamen(bloqueId: number): Observable<Examen[]> {
-    return this.http.get<Examen[]>(this.url + bloqueId);
+  getExamen(bloqueId: number): Observable<Examen> {
+    return this.http.get<Examen>(this.url + bloqueId);
     
   }
 

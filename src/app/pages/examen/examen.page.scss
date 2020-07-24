@@ -1,20 +1,64 @@
 ion-content {
-    --background: var(--ion-color-light) !important;
-  }
-  
-  ion-toolbar {
-    --background: var(--ion-color-success-tint) !important;
-  
-    .btnRegresar {
-      --color: var(--ion-color-light) !important;
-      font-size: 18px !important;
-      margin: 7px !important;
-  
-      .iconBack {
-        margin-right: 24px !important;
-        color: var(--ion-color-light) !important;
-      }
+  --background: var(--ion-color-light) !important;
+}
+
+ion-toolbar {
+  --background: var(--ion-color-success-tint) !important;
+
+  .btnRegresar {
+    --color: var(--ion-color-light) !important;
+    font-size: 18px !important;
+    margin: 7px !important;
+
+    .iconBack {
+      margin-right: 24px !important;
+      color: var(--ion-color-light) !important;
     }
   }
-  
-  
+}
+
+.txtAsignatureBloque {
+  text-align: center !important;
+  text-shadow: 0.5px 0.5px var(--ion-color-medium) !important;
+}
+
+.cardLibro {
+  --background: var(--ion-color-dark-tint) !important;
+  border-radius: 10px !important;
+
+  ion-card-header {
+    padding: 15px 5px 20px 5px !important;
+
+    ion-card-title {
+      text-align: center !important;
+      color: var(--ion-color-light) !important;
+    }
+  }
+}
+
+.txtExamen {
+  text-align: center !important;
+  color: var(--ion-color-dark) !important;
+  text-shadow: 0.5px 0.5px var(--ion-color-medium) !important;
+
+  .border {
+    border-top: 2px dotted;
+    border-bottom: 2px dotted;
+    padding: 20px 20px 20px 20px !important;
+  }
+}
+
+
+.txtPregunta {
+  text-align: left;
+  padding: 10px 10px 10px 10px !important;
+}
+
+.txtRespuesta {
+  text-align: end;
+  padding: 10px 10px 10px 10px !important;
+}
+
+.cardPregunta {
+  padding: 20px 20px 20px 20px !important;
+}

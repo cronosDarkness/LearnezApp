@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Bloque } from "src/app/shared/models/bloque.model";
-import { BloqueService } from "src/app/shared/services/bloque.service";
 import { ExamenService } from "src/app/shared/services/examen.service";
-
+import { Examen } from 'src/app/shared/models/examen.model';
 
 @Component({
   selector: 'app-examen',
@@ -12,53 +10,35 @@ import { ExamenService } from "src/app/shared/services/examen.service";
 })
 export class ExamenPage implements OnInit {
 
-  constructor
-  (
+  constructor(
     public activatedRoute: ActivatedRoute,
-    public route: Router,
-    public bloqueService: BloqueService,
     public examenService: ExamenService,
     public router: Router
   ) { }
 
-  bloque: Bloque;
-
   bloqueId: number;
-  libroId: number;
-
-  btnPrevPageDisable: boolean;
-  btnNextPageDisable: boolean;
-  
+  examen: Examen;
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.bloqueId = parseInt(params.get("bloque-id"));
-      this.getBloque(this.bloqueId);
-      this.getExamen(this.bloqueId);
+
+      // Se obtiene el examen
+      this.examenService.getExamen(this.bloqueId).subscribe((response: Examen)=> {
+        this.examen = response;
+
+        console.log(this.examen.examenId);
+
+
+      }, (error) => {
+        console.log(error)
+      });
+
     });
-  }
-
-  getBloque(bloqueId: number) {
-    this.bloqueService.getBloque(bloqueId).subscribe((response: Bloque) => {
-      this.bloque = response;
-      this.libroId = this.bloque.libro.libroId;
-    });
-  }
-
-  // getExamen(bloqueId: number) {
-  //   this.examenService
-  //     .getExamen(bloqueId)
-  //     .subscribe((response: Examen[]) => {
-  //       this.examen = response;
-  //     });
-  // }
-
-  getExamen(bloqueId: number) {
-    this.router.navigate(["/bloque", bloqueId]);
   }
 
   regresar() {
-    this.router.navigateByUrl("bloques/" + this.libroId + "/" + this.bloque.libro.gradoId);
+    this.router.navigateByUrl("bloques/" + this.examen.bloque.bloqueId + "/" + this.examen.bloque.libro.grado.gradoId);
   }
 
 }

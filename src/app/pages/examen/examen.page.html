@@ -14,10 +14,134 @@
   </ion-toolbar>
 
   <ion-grid fixed>
-    
+
+
+    <!-- Si hay un examen -->
+    <ng-container *ngIf="examen ; else elseTemplate">
+
+      <ion-grid fixed>
+        <ion-row>
+
+          <!-- texto de la asignatura y el bloque actual -->
+          <ion-col size="6">
+
+            <ion-text class="txtAsignatureBloque">
+              <h3>{{examen.bloque.libro.titulo}}</h3>
+              <h3>{{examen.bloque.nombre}}</h3>
+            </ion-text>
+
+          </ion-col>
+
+          <!-- imagen de la asignatura -->
+          <ion-col push-xl="1" push-md="1" size-xl="4" size-md="4">
+
+            <ion-card class="cardLibro">
+              <ion-img src="assets/libros/{{examen.bloque.libro.imgLibro}}/{{examen.bloque.libro.imgLibro}}-001.png">
+              </ion-img>
+
+              <ion-card-header>
+                <ion-card-title>{{examen.bloque.libro.titulo}} {{examen.bloque.libro.grado.identificador}}°
+                </ion-card-title>
+              </ion-card-header>
+
+            </ion-card>
+
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+
+
+
+      <ion-text class="txtExamen">
+        <h3 class="border">Examen {{examen.ciclo}}</h3>
+
+        <h4>Lee la instrucción y selecciona la opción que consideres correcta.</h4>
+      </ion-text>
+
+
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6">
+            <ion-text class="txtPregunta">
+              <h4>Pregunta: 12/20</h4>
+            </ion-text>
+          </ion-col>
+          <ion-col size="6">
+            <ion-text class="txtRespuesta">
+              <h4>Aciertos: 12/20</h4>
+            </ion-text>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-card class="cardPregunta">
+
+              <ion-text color="dark">
+                <h4>Daniel, compró una pieza grande de queso,
+                  él tomo la mitad y la otra mitad la repartió en
+                  partes iguales para tres amigos. ¿Qué parte de
+                  todo el queso le tocó a cada amigo?</h4>
+              </ion-text>
+
+              <ion-list>
+                <ion-radio-group>
+
+                  <ion-item>
+                    <ion-label>a) 1/4</ion-label>
+                    <ion-radio value="1/4"></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>b) 1/5</ion-label>
+                    <ion-radio value="1/5"></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>c) 1/6</ion-label>
+                    <ion-radio value="1/6"></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>d) 1/8</ion-label>
+                    <ion-radio value="1/8"></ion-radio>
+                  </ion-item>
+
+                </ion-radio-group>
+              </ion-list>
+
+
+            </ion-card>
+          </ion-col>
+        </ion-row>
+
+
+      </ion-grid>
+
+
+
+
+
+    </ng-container>
+
+
   </ion-grid>
 
   <app-footer></app-footer>
 
 </ion-content>
 
+
+<ng-template #elseTemplate>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" [ngStyle]="{'text-align': 'center'}">
+        <h3>Sorry, test not found</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ng-template>

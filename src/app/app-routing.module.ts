@@ -32,7 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/image-modal/image-modal.module').then( m => m.ImageModalPageModule)
   },
   {
-    path: 'bloque/:bloque-id',
+    path: 'examen/:bloque-id',
     loadChildren: () => import('./pages/examen/examen.module').then( m => m.ExamenPageModule)
   },
 

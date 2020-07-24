@@ -43,7 +43,7 @@ export class BloquesPage implements OnInit {
   }
 
   irExamen(bloqueId: number) {
-    this.route.navigate(["/bloque/", bloqueId]);
+    this.route.navigate(["/examen", bloqueId]);
   }
 
   regresar() {
