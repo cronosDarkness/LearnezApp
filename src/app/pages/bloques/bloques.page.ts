@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Bloque } from "src/app/shared/models/bloque.model";
 import { BloqueService } from "src/app/shared/services/bloque.service";
+import { ExamenService } from "src/app/shared/services/examen.service";
 
 @Component({
   selector: "app-bloques",
@@ -23,8 +24,9 @@ export class BloquesPage implements OnInit {
       this.libroId = parseInt(param.get("libro-id"));
       this.gradoId = parseInt(param.get("grado-id"));
 
+      // Se obtienen todos los bloques del libro
       this.bloqueService
-        .getBloquesPorLibro(parseInt(param.get("libro-id")))
+        .getBloquesPorLibro(this.libroId)
         .subscribe(
           (response: Bloque[]) => {
             this.bloques = response;
@@ -42,10 +44,6 @@ export class BloquesPage implements OnInit {
 
   irExamen(bloqueId: number) {
     this.route.navigate(["/bloque/", bloqueId]);
-  }
-
-  addPage() {
-    this.route.navigateByUrl("/add-page");
   }
 
   regresar() {

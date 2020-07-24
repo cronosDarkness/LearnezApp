@@ -44,11 +44,14 @@
             </ion-item>
           </ion-list>
 
-          <ion-item [button]="true" (click)="irExamen(bloque.bloqueId)">
-              <ion-col size="10">
-                <ion-label>Examen</ion-label>
-              </ion-col>
-            </ion-item>
+          <ion-row *ngIf="bloque.examen != null">
+            <ion-col size="1"></ion-col>
+            <ion-col size="10">
+              <ion-button class="btnExamen" expand="block" shape="round" (click)="irExamen(bloque.bloqueId)">
+                Examen
+              </ion-button>
+            </ion-col>
+          </ion-row>
 
         </ion-card>
 
@@ -60,10 +63,4 @@
 
   <app-footer></app-footer>
 
-  <!-- fab placed to the (vertical) center and end -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addPage()">
-    <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 </ion-content>
