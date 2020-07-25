@@ -1,10 +1,12 @@
+import { Examen } from "./examen.model";
+import { OpcionExamen } from "./opcionExamen.model";
+
 export class PreguntaExamen {
   preguntaExamenId: number;
   pregunta: string;
-  opcion1: string;
-  opcion2: string;
-  opcion3: string;
-  opcion4: string;
-  respuesta: string;
+  respuestaId: number;
   numPregunta: number;
+  examenId: number;
+  examen: Examen;
+  opcionexamen: OpcionExamen;
 }

@@ -56,7 +56,7 @@
       <ion-text class="txtExamen">
         <h3 class="border">Examen {{examen.ciclo}}</h3>
 
-        <h4>Lee la instrucción y selecciona la opción que consideres correcta.</h4>
+        <h4>Lee la pregunta y selecciona la opción que consideres correcta.</h4>
       </ion-text>
 
 
@@ -69,14 +69,14 @@
           </ion-col>
           <ion-col size="6">
             <ion-text class="txtRespuesta">
-              <h4>Aciertos: X/{{maximoPreguntas}}</h4>
+              <h4>Aciertos: {{aciertos}}/{{maximoPreguntas}}</h4>
             </ion-text>
           </ion-col>
         </ion-row>
 
 
         <ion-row>
-          <ion-col size="12">
+          <ion-col *ngIf="preguntaExamen" size="12">
             <ion-card class="cardPregunta">
 
               <ion-text color="dark">
@@ -84,35 +84,29 @@
               </ion-text>
 
               <ion-list>
-                <ion-radio-group>
 
-                  <ion-item>
-                    <ion-label>a) {{preguntaExamen.opcion1}}</ion-label>
-                    <ion-radio value={{preguntaExamen.opcion1}}></ion-radio>
-                  </ion-item>
+                <ion-item>
+                  <ion-label>Opciones</ion-label>
+                  <ion-select [(ngModel)]="respuesta" interface="alert">
 
-                  <ion-item>
-                    <ion-label>b) {{preguntaExamen.opcion2}}</ion-label>
-                    <ion-radio value={{preguntaExamen.opcion2}}></ion-radio>
-                  </ion-item>
+                    <ion-select-option *ngFor="let opcion of preguntaExamen.opcionexamen"
+                      [value]="opcion.opcionExamenId">
+                      {{opcion.valor}}
+                    </ion-select-option>
 
-                  <ion-item>
-                    <ion-label>c) {{preguntaExamen.opcion3}}</ion-label>
-                    <ion-radio value={{preguntaExamen.opcion3}}></ion-radio>
-                  </ion-item>
+                  </ion-select>
+                </ion-item>
 
-                  <ion-item>
-                    <ion-label>d) {{preguntaExamen.opcion4}}</ion-label>
-                    <ion-radio value={{preguntaExamen.opcion4}}></ion-radio>
-                  </ion-item>
-
-                </ion-radio-group>
               </ion-list>
 
-              <ion-button (click)="siguientePregunta()" expand="block" shape="round">
-                Siguiente
-              </ion-button>
 
+              <ion-row>
+                <ion-col size-sm="12" size-md="8" push-md="2" size-xl="6" push-xl="3">
+                  <ion-button (click)="comprobarRespuesta(respuesta)" expand="block" shape="round">
+                    Comprobar
+                  </ion-button>
+                </ion-col>
+              </ion-row>
 
             </ion-card>
           </ion-col>

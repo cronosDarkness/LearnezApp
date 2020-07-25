@@ -28,3 +28,15 @@
 * {
     font-family: 'Chelsea Market', cursive !important;
 }
+
+.toastGreen {
+    color: white;
+    --background: var(--ion-color-success);
+    text-align: center !important;
+}
+
+.toastRed {
+    color: white;
+    text-align: center;
+    --background: var(--ion-color-danger);
+}

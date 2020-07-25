@@ -32,9 +32,11 @@
           <ion-item>
             <ion-label>Bloque</ion-label>
             <ion-select [(ngModel)]="pagina.bloqueId"  Splaceholder="Seleccciona el bloque ID" interface="action-sheet">
+
               <ion-select-option *ngFor="let bloque of bloques" [value]="bloque.bloqueId">
                 {{bloque.nombre}} {{bloque.libro.titulo}} {{bloque.libro.grado.identificador}}°
               </ion-select-option>
+              
             </ion-select>
           </ion-item>
 
