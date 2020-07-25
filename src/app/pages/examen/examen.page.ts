@@ -36,7 +36,7 @@ export class ExamenPage implements OnInit {
     this.examenService.getExamen(this.bloqueId).subscribe(
       (response: Examen) => {
         this.examen = response;
-        
+
         this.maximoPreguntas = response.numPreguntas;
         this.preguntaActual = 1;
 
@@ -61,7 +61,9 @@ export class ExamenPage implements OnInit {
   // Se obtiene la siguiente pregunta del examen
   siguientePregunta() {
 
-    this.preguntaActual += 1;
+    if(this.preguntaActual < this.maximoPreguntas) {
+      this.preguntaActual += 1;
+    }
 
     this.preguntasExamenService
       .getPreguntaExamen(this.examen.examenId, this.preguntaActual)
