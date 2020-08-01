@@ -1,4 +1,4 @@
-import { Bloque } from "./bloque.model";
+import { Bloque } from './bloque.model';
 
 export class Examen {
   examenId: number;
