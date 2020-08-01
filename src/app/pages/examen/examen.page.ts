@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ExamenService } from "src/app/shared/services/examen.service";
-import { Examen } from "src/app/shared/models/examen.model";
+import { Examen } from 'src/app/shared/models/examen.model';
 import { PreguntasExamenService } from "src/app/shared/services/preguntas-examen.service";
-import { PreguntaExamen } from "src/app/shared/models/PreguntaExamen.model";
+import { PreguntaExamen } from 'src/app/shared/models/preguntaExamen.model';
 import { ToastController } from "@ionic/angular";
 
 @Component({
